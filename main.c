@@ -50,10 +50,24 @@ void test_insertion_sort()
     printf("test insertion sort end ...\n");    
 }
 
+void test_shell_sort()
+{
+    printf("test shell sort start ...\n");
+    int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
+    printf("shell_sort before array: ");
+    print_array(array, ARRAY_LENGTH);
+    shell_sort(array, ARRAY_LENGTH);
+    printf("shell_sort after array: ");
+    print_array(array, ARRAY_LENGTH);
+    printf("test shell sort end ...\n");    
+}
+
+
 int main()
 {   
     test_bubble_sort();
     test_selection_sort();
     test_insertion_sort();
+    test_shell_sort();
     return 0;
 }

@@ -44,3 +44,19 @@ void insertion_sort(int* array, int length)
         *(array + preIndex + 1) = current;
     }
 }
+
+void shell_sort(int* array, int length)
+{
+    int gap = 0;
+    for (gap = length / 2; gap > 0; gap = gap / 2) {
+        for (int i = gap; i < length; ++i) {
+            int j = i;
+            int current = *(array + i);
+            while (j - gap >= 0 && *(array + j - gap) > current) {
+                 *(array + j) = *(array + j - gap);
+                 j = j - gap;
+            }
+            *(array + j) = current;
+        }
+    }    
+}
