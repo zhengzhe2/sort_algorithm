@@ -1,5 +1,7 @@
 #include "sort.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void bubble_sort(int* array, int length)
 {
@@ -59,4 +61,50 @@ void shell_sort(int* array, int length)
             *(array + j) = current;
         }
     }    
+}
+
+void merge(int* array, int left, int right, int mid)
+{
+    int* temp = (int*)malloc(sizeof(int) * (right - left + 1));
+    if (temp == NULL) {
+        return;
+    }
+    memset(temp, 0, sizeof(int) * (right - left + 1));
+    
+    int i = left;
+    int j = mid + 1;
+    int k = 0;
+    
+    while (i <= mid && j <= right) {
+        if (*(array + i) <= *(array + j)) {
+            *(temp + k++) = *(array + i++);
+        } else {
+            *(temp + k++) = *(array + j++);
+        }
+    }
+
+    while (i <= mid) {
+        *(temp + k++) = *(array + i++);
+    }
+
+    while (j <= right) {
+        *(temp + k++) = *(array + j++);
+    }
+
+    for (i = 0; i < k; i++) {
+		*(array + left + i) = *(temp + i);
+	}
+
+	free(temp);
+    temp = NULL;
+}
+
+void merge_sort(int* array, int left, int right)
+{
+    if (left < right) {
+        int mid = (left + right) / 2;
+        merge_sort(array, left, mid);
+        merge_sort(array, mid + 1, right);
+        merge(array, left, right, mid);
+    }
 }

@@ -62,6 +62,18 @@ void test_shell_sort()
     printf("test shell sort end ...\n");    
 }
 
+void test_merge_sort()
+{
+    printf("test merge sort start ...\n");
+    int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
+    printf("merge_sort before array: ");
+    print_array(array, ARRAY_LENGTH);
+    merge_sort(array, 0, ARRAY_LENGTH -1);
+    printf("merge_sort after array: ");
+    print_array(array, ARRAY_LENGTH);
+    printf("test merge sort end ...\n");    
+}
+
 
 int main()
 {   
@@ -69,5 +81,6 @@ int main()
     test_selection_sort();
     test_insertion_sort();
     test_shell_sort();
+    test_merge_sort();
     return 0;
 }
