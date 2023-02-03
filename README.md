@@ -1,5 +1,5 @@
 # sort_algorithm  
-运行步骤：  
+###运行步骤：  
 1.克隆仓库到本地:   
 git clone git@github.com:zhengzhe2/sort_algorithm.git   
 2.在sort_algorithm目录下创建build目录:    
@@ -13,7 +13,7 @@ make
 6.运行可执行程序:  
 ./sort  
 
-冒泡排序（Bubble Sort）  
+###冒泡排序（Bubble Sort）  
 冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。     
   
 算法描述  
@@ -37,7 +37,7 @@ void bubble_sort(int* array, int length)
 }  
 ```  
   
-选择排序（Selection Sort）  
+###选择排序（Selection Sort）  
 选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。   
   
 算法描述  
@@ -65,7 +65,7 @@ void selection_sort(int* array, int length)
 }  
 ```  
    
-插入排序（Insertion Sort）  
+###插入排序（Insertion Sort）  
 插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。  
    
 算法描述  
@@ -95,7 +95,7 @@ void insertion_sort(int* array, int length)
 }   
 ```  
    
-希尔排序（Shell Sort）  
+###希尔排序（Shell Sort）  
 1959年Shell发明，第一个突破O(n2)的排序算法，是简单插入排序的改进版。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。  
   
 算法描述  
