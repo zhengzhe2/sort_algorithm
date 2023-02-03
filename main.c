@@ -26,8 +26,21 @@ void test_bubble_sort()
     printf("test bubble sort end ...\n");
 }
 
+void test_selection_sort()
+{
+    printf("test selection sort start ...\n");
+    int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
+    printf("selection_sort before array: ");
+    print_array(array, ARRAY_LENGTH);
+    selection_sort(array, ARRAY_LENGTH);
+    printf("selection_sort after array: ");
+    print_array(array, ARRAY_LENGTH);
+    printf("test selection sort end ...\n");    
+}
+
 int main()
 {   
     test_bubble_sort();
+    test_selection_sort();
     return 0;
 }
