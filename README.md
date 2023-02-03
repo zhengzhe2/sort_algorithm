@@ -7,7 +7,7 @@ mkdir build
 3.切换到build目录下:  
 cd build      
 4.执行cmake:    
-cmake .. 
+cmake ..   
 5.执行make:  
 make    
 6.运行可执行程序:  
