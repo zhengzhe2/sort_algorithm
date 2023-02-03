@@ -1,4 +1,4 @@
-# sort_algorithm  
+# sort_algorithm （C语言版）  
 ### 运行步骤：  
 1.克隆仓库到本地:   
 git clone git@github.com:zhengzhe2/sort_algorithm.git   
