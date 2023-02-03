@@ -108,3 +108,37 @@ void merge_sort(int* array, int left, int right)
         merge(array, left, right, mid);
     }
 }
+
+int getPivot(int* array, int left, int right)
+{
+    int k = *(array + left);
+    while (left < right) {   
+        while (left < right && *(array + right) >= k) {
+            right--;
+        }
+        
+        if (left < right) {
+            *(array + left) = *(array + right);
+        }
+        
+        while (left < right && *(array + left) <= k) {
+            left++;
+        }
+
+        if (left < right) {
+            *(array + right) = *(array + left);
+        }
+    }
+
+    *(array + left) = k;
+    return left;
+}
+
+void quick_sort(int* array, int left, int right)
+{
+    if (left < right) {
+        int pivot = getPivot(array, left, right);
+        quick_sort(array, left, pivot-1);
+        quick_sort(array, pivot + 1, right);
+    }
+}
