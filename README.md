@@ -164,7 +164,7 @@ void merge(int* array, int left, int right, int mid)
 		*(array + left + i) = *(temp + i);
 	}
 
-	free(temp);
+    free(temp);
     temp = NULL;
 }
 
