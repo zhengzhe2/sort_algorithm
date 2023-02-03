@@ -68,7 +68,7 @@ void test_merge_sort()
     int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
     printf("merge_sort before array: ");
     print_array(array, ARRAY_LENGTH);
-    merge_sort(array, 0, ARRAY_LENGTH -1);
+    merge_sort(array, ARRAY_LENGTH);
     printf("merge_sort after array: ");
     print_array(array, ARRAY_LENGTH);
     printf("test merge sort end ...\n");    
@@ -80,10 +80,22 @@ void test_quick_sort()
     int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
     printf("quick_sort before array: ");
     print_array(array, ARRAY_LENGTH);
-    quick_sort(array, 0, ARRAY_LENGTH -1);
+    quick_sort(array, ARRAY_LENGTH);
     printf("quick_sort after array: ");
     print_array(array, ARRAY_LENGTH);
     printf("test quick sort end ...\n");    
+}
+
+void test_heap_sort()
+{
+    printf("test heap sort start ...\n");
+    int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
+    printf("heap_sort before array: ");
+    print_array(array, ARRAY_LENGTH);
+    heap_sort(array, ARRAY_LENGTH);
+    printf("heap_sort after array: ");
+    print_array(array, ARRAY_LENGTH);
+    printf("test heap sort end ...\n");    
 }
 
 int main()
@@ -100,6 +112,8 @@ int main()
     test_merge_sort();
     printf("#################################################\n");
     test_quick_sort();
+    printf("#################################################\n");
+    test_heap_sort();
     printf("#################################################\n");
     return 0;
 }

@@ -168,14 +168,19 @@ void merge(int* array, int left, int right, int mid)
     temp = NULL;
 }
 
-void merge_sort(int* array, int left, int right)
+void _merge_sort(int* array, int left, int right)
 {
     if (left < right) {
         int mid = (left + right) / 2;
-        merge_sort(array, left, mid);
-        merge_sort(array, mid + 1, right);
+        _merge_sort(array, left, mid);
+        _merge_sort(array, mid + 1, right);
         merge(array, left, right, mid);
     }
+}
+
+void merge_sort(int* array, int length)
+{
+    _merge_sort(array, 0, length - 1);
 }
 
 ``` 
@@ -216,12 +221,75 @@ int getPivot(int* array, int left, int right)
     return left;
 }
 
-void quick_sort(int* array, int left, int right)
+void _quick_sort(int* array, int left, int right)
 {
     if (left < right) {
         int pivot = getPivot(array, left, right);
-        quick_sort(array, left, pivot-1);
-        quick_sort(array, pivot + 1, right);
+        _quick_sort(array, left, pivot - 1);
+        _quick_sort(array, pivot + 1, right);
+    }
+}
+
+void quick_sort(int* array, int length)
+{
+    _quick_sort(array, 0, length - 1);
+}
+
+``` 
+
+### 堆排序（Heap Sort）  
+堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。  
+
+算法描述  
+1.将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；  
+2.将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]<=R[n]；  
+3.由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。  
+
+``` 
+void swap(int* array, int i, int j)
+{
+    int temp = *(array + i);
+    *(array + i) = *(array + j);
+    *(array + j) = temp;    
+}
+
+void adjust_heap(int* array, int length, int k)
+{
+    if (k < length) {
+        int root = k;
+        int l_child = 2 * k + 1;
+        int r_child = 2 * k + 2;
+        
+        if (l_child < length && *(array + root) < *(array + l_child)) {
+              root = l_child;
+        }
+
+        if (r_child < length && *(array + root) < *(array + r_child)) {
+              root = r_child;
+        }
+
+        if (root != k) {
+            swap(array, root, k);
+            adjust_heap(array, length, root);
+        }
+    }
+}
+
+void create_heap(int* array, int length)
+{
+    int last = length - 1;
+    int parent = (last - 1) / 2;
+    for (int i = parent; i >= 0; --i) {
+        adjust_heap(array, length, i);
+    }
+}
+
+void heap_sort(int* array, int length)
+{
+    create_heap(array, length);
+    for (int i = length - 1; i >= 0; --i) {
+        swap(array, i, 0);
+        adjust_heap(array, i, 0);
     }
 }
 

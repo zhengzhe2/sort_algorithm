@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// bubble_sort
 void bubble_sort(int* array, int length)
 {
     for (int i = 0; i < length - 1; ++i) {
@@ -16,6 +17,7 @@ void bubble_sort(int* array, int length)
     }
 }
 
+// selection_sort
 void selection_sort(int* array, int length)
 {
     int minIndex = 0;
@@ -32,6 +34,7 @@ void selection_sort(int* array, int length)
     }
 }
 
+// insertion_sort
 void insertion_sort(int* array, int length)
 {
     int preIndex = 0;
@@ -47,6 +50,7 @@ void insertion_sort(int* array, int length)
     }
 }
 
+// shell_sort
 void shell_sort(int* array, int length)
 {
     int gap = 0;
@@ -63,6 +67,7 @@ void shell_sort(int* array, int length)
     }    
 }
 
+// merge_sort
 void merge(int* array, int left, int right, int mid)
 {
     int* temp = (int*)malloc(sizeof(int) * (right - left + 1));
@@ -99,16 +104,22 @@ void merge(int* array, int left, int right, int mid)
     temp = NULL;
 }
 
-void merge_sort(int* array, int left, int right)
+void _merge_sort(int* array, int left, int right)
 {
     if (left < right) {
         int mid = (left + right) / 2;
-        merge_sort(array, left, mid);
-        merge_sort(array, mid + 1, right);
+        _merge_sort(array, left, mid);
+        _merge_sort(array, mid + 1, right);
         merge(array, left, right, mid);
     }
 }
 
+void merge_sort(int* array, int length)
+{
+    _merge_sort(array, 0, length - 1);
+}
+
+// quick_sort
 int getPivot(int* array, int left, int right)
 {
     int k = *(array + left);
@@ -134,11 +145,64 @@ int getPivot(int* array, int left, int right)
     return left;
 }
 
-void quick_sort(int* array, int left, int right)
+void _quick_sort(int* array, int left, int right)
 {
     if (left < right) {
         int pivot = getPivot(array, left, right);
-        quick_sort(array, left, pivot-1);
-        quick_sort(array, pivot + 1, right);
+        _quick_sort(array, left, pivot - 1);
+        _quick_sort(array, pivot + 1, right);
+    }
+}
+
+void quick_sort(int* array, int length)
+{
+    _quick_sort(array, 0, length - 1);
+}
+
+// heap_sort
+void swap(int* array, int i, int j)
+{
+    int temp = *(array + i);
+    *(array + i) = *(array + j);
+    *(array + j) = temp;    
+}
+
+void adjust_heap(int* array, int length, int k)
+{
+    if (k < length) {
+        int root = k;
+        int l_child = 2 * k + 1;
+        int r_child = 2 * k + 2;
+        
+        if (l_child < length && *(array + root) < *(array + l_child)) {
+              root = l_child;
+        }
+
+        if (r_child < length && *(array + root) < *(array + r_child)) {
+              root = r_child;
+        }
+
+        if (root != k) {
+            swap(array, root, k);
+            adjust_heap(array, length, root);
+        }
+    }
+}
+
+void create_heap(int* array, int length)
+{
+    int last = length - 1;
+    int parent = (last - 1) / 2;
+    for (int i = parent; i >= 0; --i) {
+        adjust_heap(array, length, i);
+    }
+}
+
+void heap_sort(int* array, int length)
+{
+    create_heap(array, length);
+    for (int i = length - 1; i >= 0; --i) {
+        swap(array, i, 0);
+        adjust_heap(array, i, 0);
     }
 }

@@ -63,7 +63,8 @@ void shell_sort(int* array, int length);
 // 2.对这两个子序列分别采用归并排序；  
 // 3.将两个排序好的子序列合并成一个最终的排序序列。  
 
-void merge_sort(int* array, int left, int right);
+void merge_sort(int* array, int length);
+
 
 // 快速排序（Quick Sort）  
 // 快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。  
@@ -75,6 +76,17 @@ void merge_sort(int* array, int left, int right);
 // 2.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；  
 // 3.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。  
 
-void quick_sort(int* array, int left, int right);
+void quick_sort(int* array, int length);
+
+
+// 堆排序（Heap Sort）  
+// 堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。  
+
+// 算法描述  
+// 1.将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；  
+// 2.将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]<=R[n]；  
+// 3.由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。  
+
+void heap_sort(int* array, int length);
 
 #endif
