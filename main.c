@@ -38,9 +38,22 @@ void test_selection_sort()
     printf("test selection sort end ...\n");    
 }
 
+void test_insertion_sort()
+{
+    printf("test insertion sort start ...\n");
+    int array[ARRAY_LENGTH] = { 5, 3, 0, 7, 9, 8, 2, 4, 6, 1};
+    printf("insertion_sort before array: ");
+    print_array(array, ARRAY_LENGTH);
+    insertion_sort(array, ARRAY_LENGTH);
+    printf("insertion_sort after array: ");
+    print_array(array, ARRAY_LENGTH);
+    printf("test insertion sort end ...\n");    
+}
+
 int main()
 {   
     test_bubble_sort();
     test_selection_sort();
+    test_insertion_sort();
     return 0;
 }

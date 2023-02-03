@@ -29,3 +29,18 @@ void selection_sort(int* array, int length)
         *(array + minIndex) = temp;    
     }
 }
+
+void insertion_sort(int* array, int length)
+{
+    int preIndex = 0;
+    int current = 0;
+    for (int i = 1; i < length; ++i) {
+        preIndex = i - 1;
+        current = *(array + i);
+        while (preIndex >= 0 && *(array + preIndex) > current) {
+            *(array + preIndex + 1) = *(array + preIndex);
+            preIndex--;    
+        }
+        *(array + preIndex + 1) = current;
+    }
+}
