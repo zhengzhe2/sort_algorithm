@@ -161,8 +161,8 @@ void merge(int* array, int left, int right, int mid)
     }
 
     for (i = 0; i < k; i++) {
-		*(array + left + i) = *(temp + i);
-	}
+	*(array + left + i) = *(temp + i);
+    }
 
     free(temp);
     temp = NULL;
